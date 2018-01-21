@@ -1,3 +1,4 @@
+using System;
 namespace TreehouseDefense
 {
     class Point
@@ -7,6 +8,8 @@ namespace TreehouseDefense
 
         public Point(int x, int y)
         {
+            Console.WriteLine("Point Made");
+
             X = x;
             Y = y;
         }
