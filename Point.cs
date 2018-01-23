@@ -1,4 +1,5 @@
 using System;
+
 namespace TreehouseDefense
 {
     class Point
@@ -8,18 +9,18 @@ namespace TreehouseDefense
 
         public Point(int x, int y)
         {
-            Console.WriteLine("Point Made");
-
             X = x;
             Y = y;
         }
-        public double DistanceTo(int x, int y)
+
+        public int DistanceTo(int x, int y)
         {
-            int dx = X-x;
-            int dy = Y-y;
-            int x2 = dx*dx;
-            int y2 = dy*dy;
-            return (double)(System.Math.Sqrt(x2+y2));
+            return (int)Math.Sqrt(Math.Pow(X-x, 2) + Math.Pow(Y-y, 2));
+        }
+
+        public int DistanceTo(Point point)
+        {
+            return DistanceTo(point.X, point.Y);
         }
     }
 }

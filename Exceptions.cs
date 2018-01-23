@@ -2,7 +2,7 @@ using System;
 
 namespace TreehouseDefense
 {
-	class TreehouseDefenseException : System.Exception
+	class TreehouseDefenseException : Exception
 	{
 		public TreehouseDefenseException()
 		{

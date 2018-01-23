@@ -46,17 +46,8 @@ namespace TreehouseDefense
 				return _path.GetLocationAt(_pathStep);
 			}
 		}
-		public int Health
-		{
-			get
-			{
-				return Health;
-			}
-			private set
-			{
-				Health=2;
-			}
-		}
+		public int Health=2;
+
 		public bool HasScored
 		{
 			get
@@ -81,6 +72,7 @@ namespace TreehouseDefense
 		public Invader(Path path)
 		{
 			_path = path;
+
 			// Dont need to update here anymore b/c of custom getter
 			// Location = _path.GetLocationAt(_pathStep);
 		}

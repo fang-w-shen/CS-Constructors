@@ -6,7 +6,7 @@ namespace TreehouseDefense
 	{
 		public static void Main()
 		{
-			Map map = new Map(8,5) ;
+			Map map = new Map(8,5);
 			// int area = map.Width*map.Height;
 
 			try
@@ -22,11 +22,11 @@ namespace TreehouseDefense
 						new MapLocation(6,2,map),
 						new MapLocation(7,2,map)
 					});
-				Invader invader = new Invader(path);
-				MapLocation location = new MapLocation(0,0,map);
+				// Invader invader = new Invader(path);
+				// MapLocation location = new MapLocation(0,0,map);
 				// Can't set location because it's private
 				// invader.Location = location;
-				location = invader.Location;
+				// location = invader.Location;
 
 				// Testing path inheritance
 				// MapLocation location = path.GetLocationAt(1);
@@ -35,7 +35,26 @@ namespace TreehouseDefense
 
 				// 	Console.WriteLine(location.X + "," +location.Y);
 				// }
+				Invader[] invaders =
+				{
+					new Invader(path),
+					new Invader(path),
+					new Invader(path),
+					new Invader(path)
+				};
+				Tower[] towers =
+				{
+					new Tower(new MapLocation(1,3,map)),
+					new Tower(new MapLocation(3,3,map)),
+					new Tower(new MapLocation(5,3,map))
+				};
+				Level level = new Level(invaders)
+				{
+					Towers = towers
+				};
+				bool playerWon = level.Play();
 
+				Console.WriteLine("Player" + (playerWon ? "won" : "lost" ));
 			}
 			catch(OutOfBoundsException ex)
 			{

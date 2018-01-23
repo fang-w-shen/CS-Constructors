@@ -7,7 +7,6 @@ namespace TreehouseDefense
 		public Path(MapLocation[] path)
 		{
 			_path = path;
-			Console.WriteLine("Path created");
 		}
 		public int Length
 		{
