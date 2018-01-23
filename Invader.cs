@@ -38,6 +38,12 @@ namespace TreehouseDefense
 		private readonly Path _path;
 		private int _pathStep = 0;
 
+		protected virtual int StepSize
+		{
+			get{
+				return 1;
+			}
+		}
 		// (Custom Property)
 		public MapLocation Location
 		{
@@ -78,13 +84,13 @@ namespace TreehouseDefense
 		}
 		public void Move()
 		{
-			_pathStep += 1;
+			_pathStep += StepSize;
 			// Dont need to update here anymore b/c of custom getter
 
 			// Location = _path.GetLocationAt(_pathStep);
 		}
 
-		public void DecreaseHealth(int factor)
+		public virtual void DecreaseHealth(int factor)
 		{
 			Health -= factor;
 		}

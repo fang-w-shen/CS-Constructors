@@ -5,9 +5,10 @@ namespace TreehouseDefense
     {
     	private const int _range = 1;
     	private const int _power = 1;
-    	private const double _accuracy = .75;
+    	private const double _accuracy =.75;
 
     	private static readonly Random _random = new Random();
+
     	private readonly MapLocation _location;
     	public bool IsSuccessfulShot()
     	{
