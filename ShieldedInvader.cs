@@ -16,7 +16,7 @@ namespace TreehouseDefense
 			}
 			else
 			{
-				System.Console.WriteLine("shotat shielded 0 damage");
+				System.Console.WriteLine("hit but took 0 damage");
 			}
 		}
 	}

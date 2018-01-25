@@ -1,53 +1,73 @@
 using System;
 namespace TreehouseDefense
 {
-    class Tower
-    {
-    	private const int _range = 1;
-    	private const int _power = 1;
-    	private const double _accuracy =.75;
+	class Tower
+	{
+		protected virtual int Range
+		{
+			get
+			{
+				return 1;
+			}
+		}
+		protected virtual int Power
+		{
+			get
+			{
+				return 1;
 
-    	private static readonly Random _random = new Random();
+			}
+		}
+		protected virtual double Accuracy
+		{
+			get
+			{
+				return .75;
+			}
+		}
 
-    	private readonly MapLocation _location;
-    	public bool IsSuccessfulShot()
-    	{
-    		return _random.NextDouble() < _accuracy;
-    	}
-    	public Tower(MapLocation location)
-    	{
-    		_location = location;
-    	}
+		private static readonly Random _random = new Random();
 
-    	public void FireOnInvaders(Invader[] invaders)
-    	{
+		private readonly MapLocation _location;
+		public bool IsSuccessfulShot()
+		{
+			return _random.NextDouble() < Accuracy;
+		}
+		public Tower(MapLocation location)
+		{
+			_location = location;
+		}
+
+		public void FireOnInvaders(IInvader[] invaders)
+		{
 
     		// for (int i = 0; i<invaders.Length;i++)
     		// {
     		// 	Invader invader = invaders[i];
     		// }
-    		foreach(Invader invader in invaders)
-    		{
-    			if (invader.IsActive && _location.InRangeOf(invader.Location, _range))
-    			{
-    				if (IsSuccessfulShot())
-    				{
-    					invader.DecreaseHealth(_power);
-    					Console.WriteLine("shot at and hit");
-    					if (invader.IsNeutralized)
-    					{
-    						Console.WriteLine("neutralized!");
+			foreach(IInvader invader in invaders)
+			{
+				if (invader.IsActive && _location.InRangeOf(invader.Location, Range))
+				{
+					if (IsSuccessfulShot())
+					{
+						invader.DecreaseHealth(Power);
+						Console.WriteLine("shot at and hit");
+						if (invader.IsNeutralized)
+						{
+							Console.WriteLine("neutralized an invader at " + invader.Location +"!");
 
-    					}
-    				}
-    				else
-    				{
-    					Console.WriteLine("missed");
+						}
+					}
+					else
+					{
+						Console.WriteLine("missed");
+						Console.WriteLine(invader.GetType());
 
-    				}
-    				break;
-    			}
-    		}
-    	}
-    }
+					}
+					break;
+				}
+			}
+		}
+	}
 }

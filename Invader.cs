@@ -1,7 +1,8 @@
 using System;
 namespace TreehouseDefense
 {
-	class Invader
+	// Invader does not inherit fro IInvader, but it implements IInvader's interface
+	abstract class Invader : IInvader
 	{
 		// private MapLocation _location;
     	// (Methods) Way of Getting and Setting
@@ -52,7 +53,7 @@ namespace TreehouseDefense
 				return _path.GetLocationAt(_pathStep);
 			}
 		}
-		public int Health=2;
+		public int Health=1;
 
 		public bool HasScored
 		{
@@ -92,6 +93,7 @@ namespace TreehouseDefense
 
 		public virtual void DecreaseHealth(int factor)
 		{
+			Console.WriteLine(this + ", " + this.Health);
 			Health -= factor;
 		}
 	}
