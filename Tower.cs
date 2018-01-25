@@ -26,12 +26,11 @@ namespace TreehouseDefense
 			}
 		}
 
-		private static readonly Random _random = new Random();
 
 		private readonly MapLocation _location;
 		public bool IsSuccessfulShot()
 		{
-			return _random.NextDouble() < Accuracy;
+			return Random.NextDouble() < Accuracy;
 		}
 		public Tower(MapLocation location)
 		{
